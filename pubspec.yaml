@@ -18,7 +18,7 @@ environment:
 dependencies:
   latlong2: ^0.9.0
   meta: ^1.10.0
-  sqlite3: ^2.4.3
+  sqlite3: ">=2.4.3 <4.0.0"
 
 dev_dependencies:
   lint: ^2.2.0
