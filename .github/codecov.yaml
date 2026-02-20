@@ -1,0 +1,18 @@
+# Validate with:
+# cat codecov.yml | curl --data-binary @- https://codecov.io/validate
+
+comment:
+  # this posts no PR comment if there are no coverage changes
+  require_changes: true
+
+ignore:
+  - "example/**"
+  - "test/**"
+
+github_checks:
+  annotations: false
+
+coverage:
+  status:
+    project: off
+    patch: off
