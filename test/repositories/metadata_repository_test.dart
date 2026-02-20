@@ -1,13 +1,10 @@
-import 'dart:ffi';
+@TestOn('vm')
+library;
 
-import 'package:latlong2/latlong.dart';
 import 'package:mbtiles/mbtiles.dart';
 import 'package:mbtiles/src/repository/metadata.dart';
-import 'package:sqlite3/open.dart';
 import 'package:sqlite3/sqlite3.dart';
 import 'package:test/test.dart';
-
-import '../utils.dart';
 
 void main() {
   test('Put and get Metadata', () {
@@ -26,9 +23,8 @@ void main() {
       attributionHtml: "Not a real attribution message",
       bounds: MbTilesBounds(bottom: -180, left: -90, top: 180, right: 90),
     );
-    open.overrideForAll(() => DynamicLibrary.open(sqliteLibPath));
-    final database = sqlite3.openInMemory();
-    final repo = MetadataRepository(database: database);
+    final db = sqlite3.openInMemory();
+    final repo = MetadataRepository(database: db);
 
     // when
     repo.createTable();
@@ -118,5 +114,17 @@ void main() {
       bounds: MbTilesBounds(bottom: -180, left: -90, top: 180, right: 90),
     );
     expect(metadata1.hashCode != metadata2.hashCode, isTrue);
+  });
+  test('Unsupported tile layer', () {
+    final db = sqlite3.openInMemory();
+    final repo = MetadataRepository(database: db);
+    repo.createTable();
+    const metadata = MbTilesMetadata(name: 'TestFile', format: 'jpg');
+    repo.putAll(metadata);
+    db.execute('INSERT INTO metadata (name, value) VALUES (?, ?)', [
+      'type',
+      'unsupported',
+    ]);
+    expect(() => repo.getAll(), throwsA(const TypeMatcher<UnsupportedError>()));
   });
 }

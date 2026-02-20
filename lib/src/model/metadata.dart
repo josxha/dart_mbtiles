@@ -102,18 +102,18 @@ class MbTilesMetadata {
 
   @override
   int get hashCode => Object.hash(
-        name,
-        format,
-        bounds,
-        defaultCenter,
-        defaultZoom,
-        minZoom,
-        maxZoom,
-        attributionHtml,
-        description,
-        version,
-        json,
-      );
+    name,
+    format,
+    bounds,
+    defaultCenter,
+    defaultZoom,
+    minZoom,
+    maxZoom,
+    attributionHtml,
+    description,
+    version,
+    json,
+  );
 }
 
 enum TileLayerType {
@@ -155,6 +155,3 @@ class MbTilesBounds {
   @override
   String toString() => 'MbTilesBounds($bottom, $left, $top, $right)';
 }
-
-@Deprecated('MBTilesMetadata has been renamed to MbTilesMetadata')
-typedef MBTilesMetadata = MbTilesMetadata;

@@ -1,29 +1,13 @@
-import 'dart:io';
 import 'dart:math';
 
 import 'package:mbtiles/mbtiles.dart';
 
 void main() {
-  // Get paths for the current platform. This is not needed if you use the
-  // package on flutter and include the `sqlite3_flutter_libs` package.
-  final sqlitePath = switch (Platform.operatingSystem) {
-    'windows' => r'assets\windows\sqlite3.dll',
-    'macos' => 'assets/macos/sqlite3',
-    'linux' => 'assets/linux/sqlite3',
-    String() => throw Exception(
-        'The example program is dart-only and running it on flutter is '
-        'not supported.\n'
-        'If you want to use this package in a flutter app, head over to '
-        'the package documentation!',
-      ),
-  };
-
   // ### RASTER MBTILES ###
 
   // open mbtiles
   final rasterMbtiles = MbTiles(
-    mbtilesPath: 'assets/mbtiles/countries-raster.mbtiles',
-    sqlitePath: sqlitePath,
+    path: 'assets/mbtiles/countries-raster.mbtiles',
   );
 
   // get metadata
@@ -35,14 +19,13 @@ void main() {
   print('[RASTER MBTILES] Tile size: ${formatSize(rasterTileSize)}');
 
   // close mbtiles
-  rasterMbtiles.dispose();
+  rasterMbtiles.close();
 
   // ### VECTOR MBTILES ###
 
   // open mbtiles
   final vectorMbtiles = MbTiles(
-    mbtilesPath: 'assets/mbtiles/countries-vector.mbtiles',
-    sqlitePath: sqlitePath,
+    path: 'assets/mbtiles/countries-vector.mbtiles',
   );
 
   // get metadata
@@ -56,7 +39,7 @@ void main() {
   );
 
   // close mbtiles
-  vectorMbtiles.dispose();
+  vectorMbtiles.close();
 }
 
 /// Return a formatted String for an amount of bytes

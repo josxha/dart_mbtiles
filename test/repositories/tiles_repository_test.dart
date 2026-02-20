@@ -1,17 +1,15 @@
-import 'dart:ffi';
+@TestOn('vm')
+library;
+
 import 'dart:typed_data';
 
 import 'package:mbtiles/src/repository/tiles.dart';
-import 'package:sqlite3/open.dart';
 import 'package:sqlite3/sqlite3.dart';
 import 'package:test/test.dart';
-
-import '../utils.dart';
 
 void main() {
   test('Get non existing tile', () {
     // given
-    open.overrideForAll(() => DynamicLibrary.open(sqliteLibPath));
     final database = sqlite3.openInMemory();
     final repo = TilesRepository(database: database, useGzip: false);
 
@@ -24,7 +22,6 @@ void main() {
   });
   test('Put and get uncompressed tile', () {
     // given
-    open.overrideForAll(() => DynamicLibrary.open(sqliteLibPath));
     final database = sqlite3.openInMemory();
     final tile1 = Uint8List.fromList([0x12, 0xaa, 0x84, 0x23]);
     final repo = TilesRepository(database: database, useGzip: false);
@@ -39,7 +36,6 @@ void main() {
   });
   test('Put and get compressed tile', () {
     // given
-    open.overrideForAll(() => DynamicLibrary.open(sqliteLibPath));
     final database = sqlite3.openInMemory();
     final tile1 = Uint8List.fromList([0x12, 0xaa, 0x84, 0x00]);
     final repo = TilesRepository(database: database, useGzip: true);
@@ -54,7 +50,6 @@ void main() {
   });
   test('Put and get other tile', () {
     // given
-    open.overrideForAll(() => DynamicLibrary.open(sqliteLibPath));
     final database = sqlite3.openInMemory();
     final tile1 = Uint8List.fromList([0x12, 0xaa, 0x84, 0x23]);
     final repo = TilesRepository(database: database, useGzip: false);

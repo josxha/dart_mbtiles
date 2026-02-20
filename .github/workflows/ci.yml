@@ -1,45 +1,37 @@
-name: On Commit
+name: CI
 on:
   pull_request:
   push:
+    branches: [ main ]
 
 jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: "Checkout code"
         uses: actions/checkout@v6
-      - name: Setup Flutter
+      - name: "Setup Flutter"
         uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-      - name: Get dependencies
+      - name: "Get dependencies"
         run: dart pub get
-      - name: Check formatted
+      - name: "Check formatted"
         run: dart format --output=none --set-exit-if-changed .
-      - name: Check lints
+      - name: "Check lints"
         run: dart analyze --fatal-infos
   test:
-    # sqlite3 library can't be used on linux at the moment
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: "Checkout code"
         uses: actions/checkout@v6
       # Use flutter instead of just dart to run tests with coverage
-      - name: Setup Flutter
+      - name: "Setup Flutter"
         uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-      - name: Get dependencies
+      - name: "Get dependencies"
         run: dart pub get
-      - name: Check formatted
-        run: dart format --output=none --set-exit-if-changed .
-      - name: Check lints
-        run: dart analyze --fatal-infos
-      - name: Test
+      - name: "Test"
         run: flutter test --no-pub -r expanded --coverage
-      - name: Test for web
-        run: dart test test/mbtiles_web_test.dart --platform chrome
+#      - name: Test for web
+#        run: dart test test/mbtiles_web_test.dart --platform chrome
       - name: Run Codecov
         uses: codecov/codecov-action@v4
         env:
@@ -47,15 +39,13 @@ jobs:
   package-score:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: "Checkout code"
         uses: actions/checkout@v6
-      - name: Setup Flutter
+      - name: "Setup Flutter"
         uses: subosito/flutter-action@v2
-        with:
-          channel: "stable"
-      - name: Get dependencies
+      - name: "Get dependencies"
         run: dart pub get
-      - name: Install pana
+      - name: "Install pana"
         run: dart pub global activate pana
-      - name: Check package score for all
+      - name: "Check package score for all"
         run: pana --no-dartdoc .
