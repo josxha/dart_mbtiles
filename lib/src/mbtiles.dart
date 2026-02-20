@@ -137,6 +137,6 @@ class MbTiles {
   }
 }
 
-/// Wether the current platform is web or not.
+/// Whether the current platform is web or not.
 /// Needed because `kIsWeb` is not available in pure dart packages.
 const bool _kIsWeb = bool.fromEnvironment('dart.library.js_util');
