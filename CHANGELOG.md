@@ -7,7 +7,8 @@ This release uses native assets. Please follow the new
 - Rename `dispose()` to `close()`
 - Rename `mbtilesPath` to `path`
 - Remove `sqlitePath` as it is no longer needed
-- Add support for in memory database by passing `null` to the `path` parameter
+- Add support to create an in memory database by passing `null` to the `path` 
+  parameter
 - Bump minimum Dart SDK version to 3.9
 - Remove deprecations
 

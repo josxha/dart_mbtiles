@@ -31,11 +31,6 @@ dart pub add mbtiles
 
 ## Usage
 
-This package has by design no flutter dependency to be able to use it in
-dart programs. Please refer to the [flutter instructions](#flutter) if you want
-to use it in a flutter app and [dart-only instructions](#dart-only) to use it in
-pure dart.
-
 #### 1. Open your .mbtiles file.
 
 First, you need to open your .mbtiles file. You can open it as read-only or as 
@@ -52,7 +47,7 @@ a writeable database.
   request the needed permission from the user.
 
 ```dart
-final mbtiles = MBTiles(path: 'path/to/your/mbtiles-file.mbtiles');
+final mbtiles = MbTiles(path: 'path/to/your/mbtiles-file.mbtiles');
 ```
 
 #### 2. Work with the database

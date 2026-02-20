@@ -17,7 +17,7 @@ import 'package:sqlite3/sqlite3.dart'
 class MbTiles {
   static const _notEditableMsg =
       'Database not editable, please set the parameter '
-      '`MBTiles(editable: true)';
+      '`MbTiles(editable: true)';
   late final CommonDatabase _database;
   late final MetadataRepository _metadataRepo;
   late final TilesRepository _tileRepo;
@@ -137,6 +137,6 @@ class MbTiles {
   }
 }
 
-/// Weather the current platform is web or not.
+/// Wether the current platform is web or not.
 /// Needed because `kIsWeb` is not available in pure dart packages.
 const bool _kIsWeb = bool.fromEnvironment('dart.library.js_util');
