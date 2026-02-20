@@ -1,5 +1,5 @@
 import 'package:latlong2/latlong.dart';
-import 'package:mbtiles/src/model/mbtiles_metadata.dart';
+import 'package:mbtiles/src/model/metadata.dart';
 import 'package:sqlite3/common.dart';
 
 class MetadataRepository {
@@ -70,7 +70,7 @@ class MetadataRepository {
         'baselayer' => TileLayerType.baseLayer,
         'overlay' => TileLayerType.overlay,
         null => null,
-        _ => throw Exception(
+        _ => throw UnsupportedError(
             'The MBTiles file contains an unsupported tile layer type: $raw',
           ),
       };

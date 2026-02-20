@@ -1,3 +1,16 @@
+## [0.5.0] 2026-02-20
+
+This release uses native assets. Please follow the new 
+[Getting started](https://pub.dev/packages/mbtiles#getting-started) guide.
+
+- Update `sqlite3` dependency to v3
+- Rename `dispose()` to `close()`
+- Rename `mbtilesPath` to `path`
+- Remove `sqlitePath` as it is no longer needed
+- Add support for in memory database by passing `null` to the `path` parameter
+- Bump minimum Dart SDK version to 3.9
+- Remove deprecations
+
 ## [0.4.2] 2024-05-17
 
 - Make compatible with WASM

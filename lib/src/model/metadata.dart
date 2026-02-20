@@ -155,6 +155,3 @@ class MbTilesBounds {
   @override
   String toString() => 'MbTilesBounds($bottom, $left, $top, $right)';
 }
-
-@Deprecated('MBTilesMetadata has been renamed to MbTilesMetadata')
-typedef MBTilesMetadata = MbTilesMetadata;

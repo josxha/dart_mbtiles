@@ -61,6 +61,6 @@ class TilesRepository {
   }
 
   void dispose() {
-    _putTileStmt?.dispose();
+    _putTileStmt?.close();
   }
 }
