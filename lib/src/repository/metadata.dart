@@ -27,13 +27,12 @@ class MetadataRepository {
 
     // tile layer bounds
     MbTilesBounds? bounds;
-    if (map['bounds']?.split(',')
-        case [
-          final left,
-          final bottom,
-          final right,
-          final top,
-        ]) {
+    if (map['bounds']?.split(',') case [
+      final left,
+      final bottom,
+      final right,
+      final top,
+    ]) {
       bounds = MbTilesBounds(
         left: double.parse(left),
         bottom: double.parse(bottom),
@@ -67,13 +66,13 @@ class MetadataRepository {
   }
 
   TileLayerType? _parseTileLayerType(String? raw) => switch (raw) {
-        'baselayer' => TileLayerType.baseLayer,
-        'overlay' => TileLayerType.overlay,
-        null => null,
-        _ => throw UnsupportedError(
-            'The MBTiles file contains an unsupported tile layer type: $raw',
-          ),
-      };
+    'baselayer' => TileLayerType.baseLayer,
+    'overlay' => TileLayerType.overlay,
+    null => null,
+    _ => throw UnsupportedError(
+      'The MBTiles file contains an unsupported tile layer type: $raw',
+    ),
+  };
 
   void createTable() => database.execute('''
       CREATE TABLE metadata (name text PRIMARY KEY, value text);

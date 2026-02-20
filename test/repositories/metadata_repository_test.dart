@@ -1,3 +1,6 @@
+@TestOn('vm')
+library;
+
 import 'package:mbtiles/mbtiles.dart';
 import 'package:mbtiles/src/repository/metadata.dart';
 import 'package:sqlite3/sqlite3.dart';

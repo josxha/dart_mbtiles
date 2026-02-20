@@ -102,18 +102,18 @@ class MbTilesMetadata {
 
   @override
   int get hashCode => Object.hash(
-        name,
-        format,
-        bounds,
-        defaultCenter,
-        defaultZoom,
-        minZoom,
-        maxZoom,
-        attributionHtml,
-        description,
-        version,
-        json,
-      );
+    name,
+    format,
+    bounds,
+    defaultCenter,
+    defaultZoom,
+    minZoom,
+    maxZoom,
+    attributionHtml,
+    description,
+    version,
+    json,
+  );
 }
 
 enum TileLayerType {

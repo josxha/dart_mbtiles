@@ -10,10 +10,7 @@ class TilesRepository {
 
   CommonPreparedStatement? _putTileStmt;
 
-  TilesRepository({
-    required this.database,
-    required this.useGzip,
-  });
+  TilesRepository({required this.database, required this.useGzip});
 
   Uint8List? getTile(int zoom, int column, int row) {
     final rows = database.select(
@@ -31,14 +28,11 @@ class TilesRepository {
   }
 
   void putTile(int zoom, int column, int row, Uint8List bytes) {
-    _putTileStmt ??= database.prepare(
-      '''
+    _putTileStmt ??= database.prepare('''
         INSERT OR REPLACE INTO tiles
         (zoom_level, tile_column, tile_row, tile_data) 
         VALUES (?, ?, ?, ?);
-        ''',
-      persistent: true,
-    );
+        ''', persistent: true);
     _putTileStmt!.execute([
       zoom,
       column,

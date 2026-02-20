@@ -1,3 +1,6 @@
+@TestOn('vm')
+library;
+
 import 'dart:typed_data';
 
 import 'package:mbtiles/src/repository/tiles.dart';
