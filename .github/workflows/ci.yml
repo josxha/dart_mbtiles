@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: "Setup Flutter"
         uses: subosito/flutter-action@v2
       - name: "Get dependencies"
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       # Use flutter instead of just dart to run tests with coverage
       - name: "Setup Flutter"
         uses: subosito/flutter-action@v2
@@ -40,7 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: "Setup Flutter"
         uses: subosito/flutter-action@v2
       - name: "Get dependencies"
