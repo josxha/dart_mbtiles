@@ -1,3 +1,7 @@
+## [0.5.1] 2026-09-01
+
+- Upgrade latlong2 to ^0.10.0
+
 ## [0.5.0] 2026-02-20
 
 This release uses native assets. Please follow the new 
